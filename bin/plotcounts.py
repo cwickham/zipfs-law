@@ -8,7 +8,7 @@ def main(args):
     df = pd.read_csv(args.infile, header=None, names=('word', 'word_frequency'))
     df['rank'] = df['word_frequency'].rank(ascending=False)
     df['inverse_rank'] = 1 / df['rank'] 
-    df.plot.scatter(x='word_frequency', y='inverse_rank',
+    df.plot.scatter(x='word_frequency', y='rank', loglog = True,
                     figsize=[12, 6], grid=True, xlim=args.xlim)
     plt.savefig(args.outfile)
 
